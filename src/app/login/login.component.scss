@@ -1,0 +1,67 @@
+@import '../../assets/styles/base';
+@import 'helpers';
+
+::ng-deep.login-screen {
+  // background-image: url('/assets/images/kaaba.jpg');
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center;
+  @include bg-image($url: '/assets/images/kaaba.jpg', $size: cover, $position: center);
+
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // flex-direction: column;
+
+  @include flex($dir: column, $ai: center, $jc: center);
+
+  height: 100vh;
+
+  &_message {
+    color: white;
+    text-shadow: 1px 1px var(--dark-0);
+    margin-bottom: 0.5rem;
+  }
+
+  &_input {
+    margin-bottom: 1rem;
+    position: relative;
+    .p-inputtext {
+      background-color: rgba($color: #f4f2f2a6, $alpha: 0.6);
+      outline: none;
+      border: none;
+      border-radius: 25px;
+      color: var(--light-0);
+      padding-left: 3rem;
+      margin-bottom: 1rem;
+
+      &::placeholder {
+        color: silver
+      }
+
+      &:hover,
+      &:enabled:focus {
+        box-shadow: none;
+        border: none;
+      }
+    }
+  }
+
+  &_icon {
+   // background-color: rgba($color: #f4f2f2a6, $alpha: 0.6);
+    outline: none;
+    border: none;
+    //border-radius: 25px 0 0 25px;
+    color: var(--light-0);
+    padding: 0.5rem 0 0 0.5rem;
+    position: absolute;
+  }
+
+  &_password-hint {
+    color: aliceblue;
+    font-size: 0.8rem;
+    text-align: center;
+    text-shadow: 1px 1px white;
+  }
+
+}
