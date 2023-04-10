@@ -1,0 +1,54 @@
+<!--
+<mat-toolbar color="primary">
+  Card view demo
+  <div fxHide.lt-md>
+    <span class="column-label">Columns</span>
+    <mat-slider [max]="6" [min]="3" [(ngModel)]="gridColumns" [thumbLabel]="true">
+    </mat-slider>
+  </div>
+</mat-toolbar>
+
+-->
+<app-content-header [infos]="infos"></app-content-header>
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let user of users$ | async">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header>
+          <mat-card-title> {{user.lastname}} {{user.firstname}} </mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="../../assets/images/inconnu.jpg">
+        <mat-card-content>
+          <div>
+            <span class="card-content-label">Email: </span>{{user.email}}
+          </div>
+
+          <div>
+            <span class="card-content-label">Date de naissance: </span>{{user.dateOfBirth | date: 'dd/MM/yyyy'}}
+          </div>
+
+          <div>
+            <span class="card-content-label">Login: </span>{{user.login}}
+          </div>
+
+          <div>
+            <span class="card-content-label">Identifier: </span>{{ showIsPassport(user)}}
+          </div>
+
+          <div *ngIf="user.hasIdentity">
+            <span class="card-content-label">Type Identité: </span>{{user.identity.identityType}}
+          </div>
+
+          <div>
+            <span class="card-content-label">Téléphone: </span>{{ user.phoneNumber }}
+          </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  </div>

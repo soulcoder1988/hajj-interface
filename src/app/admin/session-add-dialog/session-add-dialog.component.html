@@ -1,0 +1,46 @@
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="sessionForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Type de session</mat-label>
+      <mat-select formControlName = "sessionType" >
+        <mat-option value="{{sessionTypeEnum.HAJJ}}">{{sessionTypeEnum.HAJJ}}</mat-option>
+        <mat-option value="{{sessionTypeEnum.OMRA}}">{{sessionTypeEnum.OMRA}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-chip-list">
+      <mat-chip-list #chipList aria-label="Session selection">
+        <mat-chip
+          *ngFor="let session of sessions"
+          [selectable]="selectable"
+          [removable]="removable"
+          (removed)="remove(session)">
+          {{session}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input
+          placeholder="Nouvelle session..."
+          #sessionInput
+          formControlName="session"
+          [matAutocomplete]="auto"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="getOnBlur()"
+          (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+      <mat-autocomplete  #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let session of filteredSessions | async" [value]="session">
+          {{session}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  <!--
+    <button mat-raised-button (click)="close()">Annuler</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Enregistrer</button>
+  -->
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close (click)="onClose()">Annuler</button>
+  <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial (click)="onSubmit()" color="primary">Enregistrer</button>
+</mat-dialog-actions>

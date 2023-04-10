@@ -1,3 +1,4 @@
+<!--
 <div class="login-screen">
   <h3 class="login-screen_message">Veuillez vous identifier, s'il vous plait</h3>
   <div class="login-screen_input">
@@ -17,10 +18,6 @@
         type="text">
     </div>
     <div class="p-input-right">
-      <!--
-         <i class="pi pi-arrow-circle-right" *ngIf="password.value"></i>
-      <i class="pi pi-key"></i>
-      -->
       <div class="login-screen_icon">
         <i class="pi pi-key" style="font-size: 2rem"></i>
       </div>
@@ -36,9 +33,42 @@
         type="password">
     </div>
   </div>
+</div>
+
+<form class="example-form">
+
+</form>
+-->
+<div class="login-screen">
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+  <form [formGroup]="form" (ngSubmit)="login()">
+  <p>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Username" formControlName="username" autocomplete="off">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field>
+      <input type="password" matInput placeholder="Password" formControlName="password" autocomplete="off" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-hint *ngIf="!password.value">Enter your password</mat-hint>
+    </mat-form-field>
+  </p>
+
   <!--
-    <div class="login-screen_password-hint">
-    TouchId or password
-  </div>
+    <p *ngIf="error" class="error">
+    {{ error }}
+  </p>
   -->
+
+  <div class="button">
+    <button type="submit" mat-flat-button color="primary">Login</button>
+  </div>
+
+  </form>
+  </mat-card-content>
+  </mat-card>
 </div>

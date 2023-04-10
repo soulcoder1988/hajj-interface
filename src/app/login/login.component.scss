@@ -1,7 +1,7 @@
 @import '../../assets/styles/base';
 @import 'helpers';
 
-::ng-deep.login-screen {
+.login-screen {
   // background-image: url('/assets/images/kaaba.jpg');
   // background-size: cover;
   // background-repeat: no-repeat;
@@ -64,4 +64,50 @@
     text-shadow: 1px 1px white;
   }
 
+}
+
+
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+//////////////////////////////////////////////
+// :host {
+//   display: flex;
+//   justify-content: center;
+//  // margin: 100px 0px;
+// }
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
 }
