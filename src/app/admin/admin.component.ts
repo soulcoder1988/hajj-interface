@@ -1,6 +1,6 @@
 import { SessionAddDialogComponent } from './session-add-dialog/session-add-dialog.component';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { ISession } from '../shared/model/ISession';
 import { SessionType } from '../shared/enum/session-type.enum';
 
